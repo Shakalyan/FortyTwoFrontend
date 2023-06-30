@@ -1,3 +1,3 @@
 # jestkiy project
 ___
-### by jestkiy teamhi
+### by jestkiy team
