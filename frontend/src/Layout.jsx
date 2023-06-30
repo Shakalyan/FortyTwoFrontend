@@ -2,6 +2,7 @@ import React from 'react';
 import {Container, Nav, Navbar} from "react-bootstrap";
 import {Link, Outlet} from "react-router-dom";
 import logo from "./img/kazakh.svg";
+import Footer from "./components/myFooter/Footer";
 // import {MDBCol, MDBContainer, MDBFooter, MDBIcon, MDBRow} from "mdb-react-ui-kit";
 
 const Layout = () => {
@@ -27,6 +28,7 @@ const Layout = () => {
                 </Container>
             </Navbar>
             <Outlet/>
+            <Footer></Footer>
         </>
     );
 };
