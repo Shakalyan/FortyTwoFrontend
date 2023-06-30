@@ -1,5 +1,5 @@
 import logo from '../img/kazakh.svg';
-import './Kazakhstan.css'
+import '../styles/Kazakhstan.css'
 
 
 function Kazakhstan() {
@@ -23,4 +23,4 @@ function Kazakhstan() {
     );
 }
 
-export default App;
+export default Kazakhstan;

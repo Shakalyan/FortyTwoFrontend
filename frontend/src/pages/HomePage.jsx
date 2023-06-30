@@ -13,9 +13,6 @@ const HomePage = () => {
             </h1>
             <Link to="/posts"
             >
-                <Button>
-                    click me
-                </Button>
             </Link>
             <Image
                 style={{margin: 'auto', marginBottom: 50}}
