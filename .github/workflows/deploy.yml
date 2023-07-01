@@ -12,7 +12,9 @@ jobs:
         install -m 600 -D /dev/null ~/.ssh/id_rsa
         echo "${{ secrets.SSH_PK }}" > ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
-    - name: build image
-      run: ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORKDIR }} && docker build . --tag=fortytwo-front"
-    - name: run container
-      run: ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORKDIR }} && docker run -p ${{ secrets.PORT }}:3000 -d fortytwo-front"        
+    - name: update repo
+      run: ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORKDIR }} && git pull"
+    - name: stop containers
+      run: ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORKDIR }}/.. && docker-compose down"
+    - name: rebuild and start containers
+      run: ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORKDIR }}/.. && docker-compose up --force-recreate --build -d"
