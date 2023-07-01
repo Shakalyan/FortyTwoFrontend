@@ -1,7 +1,7 @@
 import { SET_IS_AUTH} from "./actions/setIsAuth";
 
 let initialState = {
-    isAuth: false
+    isAuth: localStorage.getItem('isAuth')
 }
 
 export function reducer(state = initialState, action) {

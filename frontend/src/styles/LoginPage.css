@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     background-color: rgba(30, 31, 34, 0.49);
 }
 
@@ -15,4 +16,30 @@
     background: white;
     border-radius: 12px;
     min-width: 250px;
+    max-width: 800px;
+}
+
+.age-verification-button-enter-before {
+    background: transparent url(https://ei.phncdn.com/www-static/images/vk.png?cache=2023062901) no-repeat 0 0;
+    content: '';
+    display: inline-block;
+    height: 34px;
+    vertical-align: middle;
+    width: 52px;
+}
+
+.age-verification-button-enter {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    display: inline-block;
+    padding-top: 25px;
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    background-color: #4d75a2;
+    padding: 1rem;
+    cursor: pointer;
 }

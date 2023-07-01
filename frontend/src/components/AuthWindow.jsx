@@ -10,17 +10,19 @@ const AuthWindow = () => {
     const handleVKLogin = () => {
         console.log('NAZHAL');
         dispatch(setIsAuth(true));
-        // Обработчик нажатия на кнопку "Войти через ВК"
-        // Выполните здесь необходимые действия для входа через ВК
+        localStorage.setItem('isAuth', 'true')
     };
-
-    console.log("Отрисовался")
 
     return (
         <div className="Login-wrapper">
             <div className="Login-content">
                 <h2>Аутентификация =)</h2>
-                <Button variant="dark" onClick={handleVKLogin}>Войти через ВК</Button>
+                <p style={{color:"black"}}>Данный сайт предназначен сугубо для лиц 18 лет и старше. Если вы моложе 18 лет, то, пожалуйста, покиньте этот сайт. Этот сайт содержит изображения, видео, аудио, текст для взрослых людей, занимающихся действиями сексуального характера. Если доступ и просмотр материалов для взрослых не законен для Вас, пожалуйста, покиньте сайт прямо сейчас.</p>
+                <button onClick={handleVKLogin} className="age-verification-button-enter">
+                    <div className="age-verification-button-enter-before">
+                    </div>
+                    <span>Войти через ВК</span>
+                </button>
             </div>
         </div>
     );
