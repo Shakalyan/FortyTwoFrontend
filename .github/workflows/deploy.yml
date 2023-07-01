@@ -15,4 +15,4 @@ jobs:
     - name: build image
       run: ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORKDIR }} && docker build . --tag=fortytwo-front"
     - name: run container
-      run: docker run -p ${{ secrets.PORT }}:3000 fortytwo-front        
+      run: ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORKDIR }} && docker run -p ${{ secrets.PORT }}:3000 fortytwo-front"        
