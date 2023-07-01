@@ -17,6 +17,7 @@ const Layout = () => {
     const handleLogout = () => {
         console.log('LOGOUT');
         dispatch(setIsAuth(false));
+        localStorage.removeItem('isAuth')
         // Обработчик нажатия на кнопку "Войти через ВК"
         // Выполните здесь необходимые действия для входа через ВК
     };
