@@ -12,11 +12,7 @@ jobs:
         install -m 600 -D /dev/null ~/.ssh/id_rsa
         echo "${{ secrets.SSH_PK }}" > ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
-    - name: connect to server
-      run: |
-        ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }}
-        cd ${{ secrets.WORKDIR }}
     - name: build image
-      run: docker build . --tag=fortytwo-front
+      run: ssh ${{ secrets.SSH_USER}}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORKDIR }} && docker build . --tag=fortytwo-front"
     - name: run container
       run: docker run -p ${{ secrets.PORT }}:3000 fortytwo-front        
