@@ -7,18 +7,24 @@ const HomePage = () => {
     return (
         <div style={{display:'flex', justifyContent: 'center', flexDirection:'column'}}>
             <h1
-                style={{fontSize: 150,display:'flex', justifyContent: 'center', alignContent:'center'}}
+                style={{margin: 0, background: 'rgba(253,253,253,0.4)', color: 'white', fontSize: 128,display:'flex', justifyContent: 'center', alignContent:'center'}}
             >
-                HOME PAGE
+                welcome to FortyTwo!
             </h1>
-            <Link to="/posts"
-            >
-            </Link>
+
+
+
+            {/*<Link to="/posts"*/}
+            {/*>*/}
+            {/*</Link>*/}
             <Image
-                style={{margin: 'auto', marginBottom: 50}}
+                style={{
+                    margin: 'auto',
+                    marginTop: -890,
+                    zIndex: -10
+                }}
                 src={pic}
-                rounded
-                width='80%'
+                width='100%'
             />
         </div>
     );
