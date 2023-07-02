@@ -1,9 +1,9 @@
 import React from 'react';
-import {Button, Image} from "react-bootstrap";
+import {Image} from "react-bootstrap";
 import pic from '../img/pic.jpg'
-import {Link} from "react-router-dom";
 
 const HomePage = () => {
+
     return (
         <div style={{display:'flex', justifyContent: 'center', flexDirection:'column'}}>
             <h1

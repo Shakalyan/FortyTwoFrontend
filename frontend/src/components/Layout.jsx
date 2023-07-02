@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Container, Nav, Navbar} from "react-bootstrap";
-import {Link, Outlet} from "react-router-dom";
+import {Link, Outlet, useNavigate, useSearchParams} from "react-router-dom";
 import logo from "../img/kazakh.svg";
 import Footer from "./myFooter/Footer";
 import "../styles/Layout.css";
@@ -8,21 +8,46 @@ import AuthWindow from "./AuthWindow";
 import HomePage from "../pages/HomePage";
 import {useDispatch, useSelector} from "react-redux";
 import {setIsAuth} from "../store/actions/setIsAuth";
+import {ACCESS_TOKEN, REFRESH_TOKEN, USER_NAME_LC} from "../Consts";
+import api, {api_rejected} from "../Api";
+import {setFirstName} from "../store/actions/setFirstName";
 
 const Layout = () => {
 
-    let isAuth = useSelector(state => state.isAuth);
+    const [searchParams, setSearchParams] = useSearchParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate()
+    const isAuth = useSelector(state => state.isAuth);
+    const firstName = useSelector(state => state.firstName);
+
+    useEffect(() => {
+        const access = searchParams.get("access")
+        const refresh = searchParams.get("refresh")
+        if(access !== null){
+            localStorage.setItem(ACCESS_TOKEN, access)
+            localStorage.setItem(REFRESH_TOKEN, refresh)
+
+            api_rejected.get("users/current-info")
+                .then(response => {
+                    console.log(response.data)
+                    localStorage.setItem(USER_NAME_LC, response.data.first_name)
+                    dispatch(setFirstName(response.data.first_name))
+                })
+                .catch(reason => console.log(reason))
+
+            dispatch(setIsAuth(true))
+            navigate("/")
+        }
+    }, [])
 
     const handleLogout = () => {
         console.log('LOGOUT');
         dispatch(setIsAuth(false));
-        localStorage.removeItem('isAuth')
+        localStorage.removeItem(ACCESS_TOKEN)
+        localStorage.removeItem(REFRESH_TOKEN)
         // Обработчик нажатия на кнопку "Войти через ВК"
         // Выполните здесь необходимые действия для входа через ВК
     };
-
-    const [showWindow, setShowWindow] = useState(false);
 
 
     return (
@@ -53,7 +78,7 @@ const Layout = () => {
                                 </Nav>
                                 {isAuth?
                                     <>
-                                        <Navbar.Text>loshara</Navbar.Text>
+                                        <Navbar.Text>{firstName}</Navbar.Text>
                                         <Button variant="dark" onClick={handleLogout}>Log out</Button>
                                     </>
                                     : null

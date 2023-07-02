@@ -1,5 +1,6 @@
 import logo from '../img/kazakh.svg';
 import '../styles/Kazakhstan.css'
+import AudioPlayer from "../components/AudioPlayer";
 
 
 function Kazakhstan() {
@@ -11,8 +12,10 @@ function Kazakhstan() {
                 </div>
 
                 <p style={{padding: 10, border: '20px solid darkgreen', backgroundColor: '#fdeb2d', color: 'blue', fontSize: 50, marginTop: 100, marginBottom: 0, fontStyle:"italic"}}>
-                    КАЗАХСТАН ОБЪЯВЛЯЕТ ВАМ ЯДЕРНУЮ БОМБОРДИРОВКУ
+                    КАЗАХСТАН ОБЪЯВЛЯЕТ ВАМ ЯДЕРНУЮ БОМБАРДИРОВКУ
                 </p>
+
+                <AudioPlayer />
 
                 <img src={"https://i.gifer.com/7vCG.gif"} height={250} style={{top: 0, left: 150, position: "absolute", transform: "rotate(180deg)"}}/>
 
