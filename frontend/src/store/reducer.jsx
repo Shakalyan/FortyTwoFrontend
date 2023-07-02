@@ -1,7 +1,10 @@
-import { SET_IS_AUTH} from "./actions/setIsAuth";
+import {SET_IS_AUTH} from "./actions/setIsAuth";
+import {REFRESH_TOKEN, USER_NAME_LC} from "../Consts";
+import {SET_FIRST_NAME} from "./actions/setFirstName";
 
 let initialState = {
-    isAuth: localStorage.getItem('isAuth')
+    isAuth: localStorage.getItem(REFRESH_TOKEN) !== null,
+    firstName: localStorage.getItem(USER_NAME_LC) ?? "Anton"
 }
 
 export function reducer(state = initialState, action) {
@@ -10,6 +13,11 @@ export function reducer(state = initialState, action) {
             return {
                 ...state,
                 isAuth: action.isAuth
+            }
+        case SET_FIRST_NAME:
+            return {
+                ...state,
+                firstName: action.firstName
             }
         default:
             return {

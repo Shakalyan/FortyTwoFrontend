@@ -1,23 +1,65 @@
 import logo from '../img/kazakh.svg';
 import '../styles/Kazakhstan.css'
 
+import useAudio from "../hooks/useAudio";
+import music from "../audio/music.mp3"
 
 function Kazakhstan() {
+    const [playing, toggle] = useAudio(music);
+
+
     return (
         <div>
-            <header className="App-header">
-                <div style={{marginTop: 30, backgroundColor: "blue", borderRadius: 100}} className={"Div-app-logo"}>
-                    <img src={logo} className="App-logo" alt="logo" style={{padding: 100}}/>
+            <header className={playing? "kz-wrapper kz-wrapper-active" : "kz-wrapper"}>
+                <div
+                    className={playing? "div-kz-logo div-kz-logo-active" : "div-kz-logo"}
+                    onClick={toggle}
+                >
+                    <img
+                        src={logo}
+                        className={playing? "kz-logo kz-logo-active" : "kz-logo"}
+                        alt="logo"
+                        style={{padding: 100}}
+                    />
                 </div>
 
-                <p style={{padding: 10, border: '20px solid darkgreen', backgroundColor: '#fdeb2d', color: 'blue', fontSize: 50, marginTop: 100, marginBottom: 0, fontStyle:"italic"}}>
-                    КАЗАХСТАН ОБЪЯВЛЯЕТ ВАМ ЯДЕРНУЮ БОМБОРДИРОВКУ
-                </p>
+                <div
+                    className={playing? "kz-text-active" : "kz-text"}
+                >
 
-                <img src={"https://i.gifer.com/7vCG.gif"} height={250} style={{top: 0, left: 150, position: "absolute", transform: "rotate(180deg)"}}/>
+                    КАЗАХСТАН ОБЪЯВЛЯЕТ ВАМ ЯДЕРНУЮ БОМБАРДИРОВКУ
+                </div>
 
-                <img src={"https://i.gifer.com/UTF.gif"} height={400} style={{top: 300, left: 1350, position: "absolute"}}/>
 
+
+                {playing?
+                    <>
+                        <img
+                            src={"https://i.gifer.com/7vCG.gif"}
+                            height={250}
+                            style={{
+                                top: "6vh",
+                                left: "10vw",
+                                position: "absolute",
+                                transform: "rotate(180deg)",
+                                zIndex: 0
+                            }}
+                            alt
+                        />
+
+                        <img
+                            src={"https://i.gifer.com/UTF.gif"}
+                            height={400}
+                            style={{
+                                bottom: "24vh",
+                                right: "5vw",
+                                position: "absolute",
+                                zIndex: 0
+                            }}
+                            alt
+                        />
+                    </> : null
+                }
             </header>
         </div>
     );
