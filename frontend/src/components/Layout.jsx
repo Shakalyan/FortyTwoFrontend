@@ -55,7 +55,7 @@ const Layout = () => {
         <div className="Layout-wrapper">
             {!isAuth?
                 <>
-                    <HomePage/>
+                    {/*<HomePage/>*/}
                     <AuthWindow/> : <></>
                 </> :
                 <>
