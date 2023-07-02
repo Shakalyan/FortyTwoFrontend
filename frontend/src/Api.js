@@ -2,7 +2,7 @@ import axios from 'axios';
 import {ACCESS_TOKEN, REFRESH_TOKEN} from "./Consts";
 
 export const API_VERSION = "v1"
-export const API_BASE_URL = `http://localhost:8080/${API_VERSION}`
+export const API_BASE_URL = `http://94.131.96.250:8080/${API_VERSION}`
 const api_settings = {
     withCredentials: true,
     baseURL: API_BASE_URL

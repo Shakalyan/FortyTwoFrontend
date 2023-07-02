@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Container, Nav, Navbar} from "react-bootstrap";
 import {Link, Outlet, useNavigate, useSearchParams} from "react-router-dom";
-import logo from "../img/kazakh.svg";
 import Footer from "./myFooter/Footer";
 import "../styles/Layout.css";
 import AuthWindow from "./AuthWindow";
-import HomePage from "../pages/HomePage";
 import {useDispatch, useSelector} from "react-redux";
 import {setIsAuth} from "../store/actions/setIsAuth";
 import {ACCESS_TOKEN, REFRESH_TOKEN, USER_NAME_LC} from "../Consts";
 import api, {api_rejected} from "../Api";
 import {setFirstName} from "../store/actions/setFirstName";
+import logo from "../img/second.svg";
 
 const Layout = () => {
 
